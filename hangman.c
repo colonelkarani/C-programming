@@ -29,16 +29,13 @@ int main() {
         printf("Incorrect: %s\n", incorrectLetters);
         printf("Tries left: %d\n", MAX_TRIES - tries);
         printf("Guess a letter: ");
-        
         char letter;
         scanf(" %c", &letter);
-        
         // Check for repeat guesses
         if (strchr(guessed, letter) || strchr(incorrectLetters, letter)) {
             printf("Already guessed!\n");
             continue;
         }
-        
         // Check for correct guess
         int found = 0;
         for (int i = 0; i < wordLength; i++) {
@@ -47,19 +44,16 @@ int main() {
                 found = 1;
             }
         }
-        
         if (!found) {
             incorrectLetters[tries++] = letter;
             incorrectLetters[tries] = '\0';
         }
-        
         // Check win condition
         if (strcmp(word, guessed) == 0) {
             printf("\nYou won! The word was: %s\n", word);
             return 0;
         }
     }
-    
     printf("\nYou lost! The word was: %s\n", word);
     return 0;
 }
